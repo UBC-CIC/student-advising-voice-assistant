@@ -107,56 +107,26 @@ First, clone the GitHub repository onto your machine. To do this:
 3. Clone the github repository by entering the following:
 
 ```bash
-git clone https://github.com/UBC-CIC/student-advising-assistant
+git clone https://github.com/UBC-CIC/student-advising-voice-assistant.git
 ```
 
 The code should now be in the folder you created. Navigate into the root folder containing the entire codebase by running the command:
 
 ```bash
-cd student-advising-assistant
+cd student-advising-voice-assistant
 ``` 
 
 ### Step 2: CDK Deployment
 
 It's time to set up everything that goes on behind the scenes! For more information on how the backend works, feel free to refer to the Architecture Deep Dive, but an understanding of the backend is not necessary for deployment.
 
-**IMPORTANT**: Before moving forward with the deployment, please make sure that your **Docker Desktop** software is running (and the Docker Daemon is running). Also ensure that you have npm installed on your system.
+Note this CDK deployment was tested in `ca-central-1` regions only.
 
-Note this CDK deployment was tested in `us-west-2` and `ca-central-1` regions only.
-
-Open a terminal in the `/backend/cdk` directory.
-The file `demo-app.zip` should already exist in the directory. In the case that it does not, run the following command to create it:
-``` bash
-zip -r demo-app.zip aws_helpers/ flask_app/ Dockerfile -x "*/.*" -x ".*" -x "*.env" -x "__pycache__*"
-```
-Note: `zip` command requires that you use Linux or WSL. If `zip` is not installed, run `sudo apt install zip` first.
-
-**Download Requirements**
+**Download Requirements**  
 Install requirements with npm:
 ```npm install```
 
-**Configure the CDK deployment**
-The configuration options are in the `/backend/cdk/config.json` file. By default, the contents are:
-```
-{
-    "retriever_type": "pgvector",
-    "llm_mode": "ec2"
-}
-```
-- `retriever_type` allowed values: "pgvector", "pinecone"
-- `llm_mode` allowed values: "ec2", "sagemaker", "none"
-
-If you chose to use Pinecone.io retriever, replace the `"pgvector"` value with `"pinecone"`.
-
-If you would prefer not to deploy the LLM, replace the `"ec2"` value with `"none"`. The system will not deploy a LLM endpoint, and it will return references from the information sources only, without generated responses. 
-
-The `"sagemaker"` options for `llm_mode` will host the model with an SageMaker inference endpoint instead of an EC2 instance. This may incur a higher cost.
-
-**Edit the URL of your web application**
-You can change the URL of your web application to your preferred name.
-Please navigate to `/backend/cdk/lib/hosting-stack.ts` file. In line 175, you can see that the constant named `cnamePrefix` is declared. Currently the value is `"student-advising-assistant-demo"`, but you change change its value so that it's going to be the URL of your application.
-
-
+**Configure the CDK deployment**  
 
 **Initialize the CDK stacks**
 (required only if you have not deployed any resources with CDK in this region before)
@@ -166,24 +136,9 @@ cdk synth --profile your-profile-name
 cdk bootstrap aws://YOUR_AWS_ACCOUNT_ID/YOUR_ACCOUNT_REGION --profile your-profile-name
 ```
 
-**Deploy the CDK stacks**
-
-You may  run the following command to deploy the stacks all at once. Please replace `<profile-name>` with the appropriate AWS profile used earlier. 
+**Deploy the CDK stacks**  
+You may run the following command to deploy the stacks all at once. Please replace `<profile-name>` with the appropriate AWS profile used earlier. 
 
 ```bash
 cdk deploy --all --profile <profile-name>
 ```
-
-#### **Extra: Taking down the deployed stacks**
-
-To take down the deployed stack for a fresh redeployment in the future, navigate to AWS Cloudformation, click on the stack(s) and hit Delete. Please wait for the stacks in each step to be properly deleted before deleting the stack downstream. The deletion order is as followed:
-
-1. HostingStack
-2. InferenceStack
-3. student-advising-DatabaseStack
-4. student-advising-VpcStack
-5. VoiceAssistantStack
-
-### Step 3: Uploading the configuration file
-
-To complete the deployment, you will need to upload a configuration file specifying the websites to scrape for information. Continue with the [User Guide](./UserGuide.md#updating-the-configuration-file) for this step.
