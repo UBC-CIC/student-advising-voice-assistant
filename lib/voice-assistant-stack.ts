@@ -66,13 +66,8 @@ export class VoiceAssistantStack extends Stack {
                             }
                         },
                         publishingInformation: {
-                            locales: {
-                              "en-CA": {
-                                name: "student-advising-assistant"
-                              }
-                            },
                             category: "EDUCATION_AND_REFERENCE"
-                          }
+                        }
                     }
                 }
             },
