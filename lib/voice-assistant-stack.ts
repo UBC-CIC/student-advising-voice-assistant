@@ -45,13 +45,6 @@ export class VoiceAssistantStack extends Stack {
             skillType: ask.SkillType.CUSTOM,
         });
 
-        const description = 
-        `The Faculty of Science Advising office at UBC collaborated with the UBC Cloud Innovation Center (CIC) to leverage large language models (LLMs) and generative AI to build a prototype with the goal to improve the advising quality and student experience. 
-         The prototype takes information from the Academic Calendar and other reliable UBC sources to provide around-the-clock service that responds to inquiries. 
-         The application conveys key information in a conversational manner, in the effort to minimize confusion for some students.
-         This application does not require the use of any other software/hardware.
-        `;
-
         const skill = new ask.Skill(this, 'skill', {
             skillType: ask.SkillType.CUSTOM,
             skillStage: 'development',
@@ -73,28 +66,8 @@ export class VoiceAssistantStack extends Stack {
                             }
                         },
                         publishingInformation: {
-                            locales: {
-                              "en-CA": {
-                                name: "student-advising-assistant",
-                                summary: "around-the-clock service hosted by UBC, that responds to student's academic inquiries in a conversational manner.",
-                                description: description,
-                                smallIconUri: "../docs/icons/icon_108_A2Z.png",
-                                largeIconUri: "../docs/icons/icon_512_A2Z.png",
-                                examplePhrases: ["Alexa, open student advising", "Alexa, start student advising"],
-                              }
-                            },
-                            privacyAndCompliance: {
-                                allowsPurchase: false,
-                                usesPersonalInfo: false,
-                                isChildDirected: false,
-                                isExportCompliant: true,
-                                shoppingKit: {
-                                    isShoppingActionsEnabled: false,
-                                    isAmazonAssociatesOnAlexaEnabled: false,
-                                },
-                            },
                             category: "EDUCATION_AND_REFERENCE"
-                          }
+                        }
                     }
                 }
             },
