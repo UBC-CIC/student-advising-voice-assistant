@@ -49,6 +49,7 @@ Navigate back to the Amazon Developer Console, then click the `Login with Amazon
 
 Click the `Create a New Security Profile` button, and fill out the form.
 ![LWA form](./images/lwa_form.png)
+
 Freely set your profile name and description, and set Consent Privacy Notice URL to `https://example.com/privacy`, since you won't need this URL. 
 After you fill out all the required fields, click "Save".
 
@@ -75,6 +76,7 @@ Since CDK requires access to the Alexa Developer credentials we just generated, 
 
 Please navigate to the AWS Secrets Manager Console. Click the "Store a new secret" button, and enter the necessary information.
 ![secret](./images/store_secret.png)
+
 - For the `Secret Type` field, choose `Other type of secret`.
 - For the `Key/Value pairs` field, select `Plaintext`. Then paste the following values, replacing the values enclosed by angle brackets `<>`.
     ```bash
@@ -85,9 +87,9 @@ Please navigate to the AWS Secrets Manager Console. Click the "Store a new secre
         "refresh-token": "<Your Refresh Token>"
     }
     ```
-After filling out those fields, click on `Next` to proceed.
-
+After filling out these fields, click on `Next` to proceed.
 ![secret-2](./images/store_secret_2.png)
+
 Now enter your secret name. This can be anything you like.  
 **Please leave the rest of the form blank, and simply move on by clicking `Next`.**  
 **You do not have to edit anything in step 3: `Configure Rotation` section.**
@@ -96,6 +98,7 @@ After entering all necessary information, review them and create your secret by 
 
 Go back to the Secrets Manager Console, and click on the secret name you just created. 
 ![secret-info](./images/secret_info.png)
+
 Under the `Secret details` section, you can see your Secret ARN. Copy down this value.
 
 
