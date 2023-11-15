@@ -1,6 +1,6 @@
 # Student Advising Voice Assistant
 
-This is a voice assistance feature of the [student advising assistant project](https://github.com/UBC-CIC/student-advising-assistant), where you can interact with the question answering system through Alexa. For more information visit the [CIC website].
+This is a voice assistance feature for the [student advising assistant project](https://github.com/UBC-CIC/student-advising-assistant), where you can interact with the question answering system through Alexa. For more information visit the [CIC website].
 
 | Index | Description |
 | ----- | ----------- |
