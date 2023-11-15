@@ -18,7 +18,7 @@ The following architecture diagram illustrates the various AWS components utiliz
 ![Architecture Diagram](docs/images/Architecture-Diagram.png)
 
 ## Deployment
-For instructions on how to deploy the application, refer to the [Deployment Guide]().
+For instructions on how to deploy the application, refer to the [Deployment Guide](./docs/DeploymentGuide.md).
 
 ## User Guide
 For instructions on how interact with the application via Alexa, refer to the [User Guide]().
