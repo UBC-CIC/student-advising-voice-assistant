@@ -24,7 +24,7 @@ For instructions on how to deploy the application, refer to the [Deployment Guid
 For instructions on how interact with the application via Alexa, refer to the [User Guide](./docs/UserGuide.md).
 
 ## Development
-For information on how the application was developed, refer to [Development Document]().
+For information on how the application was developed, refer to [Development Document](./docs/DevelopmentDocument.md).
 
 ## Directories
 ```
