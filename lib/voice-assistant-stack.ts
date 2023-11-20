@@ -17,12 +17,9 @@ export class VoiceAssistantStack extends Stack {
             stringValue: "M33ZTT1LFMTQJS",
         });
 
-        const cliendId = secretsmanager.Secret.
-            fromSecretCompleteArn(this, 'client-id-parameter', 'arn:aws:secretsmanager:ca-central-1:286997668524:secret:client-id-8NfJxZ');
-        const clientSecret = secretsmanager.Secret.
-            fromSecretCompleteArn(this, 'client-secret-parameter', 'arn:aws:secretsmanager:ca-central-1:286997668524:secret:client-secret-ELwxWq');
-        const refreshToken = secretsmanager.Secret.
-            fromSecretCompleteArn(this, 'refresh-token-parameter', 'arn:aws:secretsmanager:ca-central-1:286997668524:secret:refresh-token-plain-OakLG3');
+        const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // replace it with your original value
+
+        const skillCredentials = secretsmanager.Secret.fromSecretCompleteArn(this, 'skill-credentials', secretARN);
 
         const skillAsset = new Asset(this, 'skill-asset', {
             path: './skills/skill-package',
@@ -30,11 +27,11 @@ export class VoiceAssistantStack extends Stack {
 
         const skillBackendLayer = new lambda.LayerVersion(this, 'skill-backend-layer', {
             code: lambda.Code.fromAsset('./layers/skill_backend_layer.zip'),
-            compatibleRuntimes: [lambda.Runtime.PYTHON_3_9],
+            compatibleRuntimes: [lambda.Runtime.PYTHON_3_11],
         })
 
         const skillBackend = new lambda.Function(this, 'skill-backend', {
-            runtime: lambda.Runtime.PYTHON_3_9,
+            runtime: lambda.Runtime.PYTHON_3_11,
             code: lambda.Code.fromAsset('./lambda'),
             handler: 'voice_assistant.lambda_handler',
             layers: [skillBackendLayer],
@@ -48,11 +45,11 @@ export class VoiceAssistantStack extends Stack {
         const skill = new ask.Skill(this, 'skill', {
             skillType: ask.SkillType.CUSTOM,
             skillStage: 'development',
-            vendorId: 'M33ZTT1LFMTQJS',
+            vendorId: skillCredentials.secretValueFromJson('vendor-id').unsafeUnwrap(),
             authenticationConfiguration: {
-                clientId: cliendId.secretValue.unsafeUnwrap(),
-                clientSecret: clientSecret.secretValue.unsafeUnwrap(),
-                refreshToken: refreshToken.secretValue.unsafeUnwrap(),
+                clientId: skillCredentials.secretValueFromJson('client-id').unsafeUnwrap(),
+                clientSecret: skillCredentials.secretValueFromJson('client-secret').unsafeUnwrap(),
+                refreshToken: skillCredentials.secretValueFromJson('refresh-token').unsafeUnwrap(),
             },
             skillPackage: {
                 asset: skillAsset,
@@ -74,7 +71,5 @@ export class VoiceAssistantStack extends Stack {
         });
         skill.node.addDependency(skillBackend);
         skill.node.addDependency(skillPermission);
-
-        // skillPermission.configureSkillId(this, 'skill-permission-id', skill);
     }
 }
