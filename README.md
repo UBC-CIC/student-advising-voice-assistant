@@ -29,13 +29,16 @@ For information on how the application was developed, refer to [Development Docu
 ## Directories
 ```
 ├── bin
+│   └── voice-assistant.ts
 ├── docs
 │   └── images
 ├── lambda
 ├── layers
 ├── lib
 ├── skills
-│   └── skill-package
+    └── skill-package
+        ├── assets
+        └── interactionModels
 ```
 1. `/bin`: Contains the instantiation of CDK stack
 2. `/docs`: Contains documentation for the application
@@ -44,6 +47,8 @@ For information on how the application was developed, refer to [Development Docu
 4. `/layers`: Contains the zip file that incorporates all the dependencies required to run lambda function
 5. `/lib`: Contains the deployment code for the stack of the infrastructure
 6. `/skills`: Contains the deployment code for Alexa Skill
+    - `/assets`: Contains image files used for the deployment of Alexa Skill
+    - `/interactionModels`: Contains the interaction model of the skill
 
 ## Changelog
 N/A
