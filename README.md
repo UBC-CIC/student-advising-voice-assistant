@@ -15,7 +15,7 @@ This is a voice assistance feature for the [student advising assistant project](
 
 ## High Level Architecture
 The following architecture diagram illustrates the various AWS components utilized to deliver the solution. For an in-depth explanation of the frontend and backend stacks, refer to the [Architecture Design](./docs/ArchitectureDesign.md).
-![Architecture Diagram](docs/images/Architecture-Diagram.png)
+![Architecture Diagram](docs/images/Architecture_Diagram.png)
 
 ## Deployment
 For instructions on how to deploy the application, refer to the [Deployment Guide](./docs/DeploymentGuide.md).

@@ -11,7 +11,7 @@ This document provides a more in-depth explanation of the system's architecture 
 This voice assistant feature is designed for [Student Advising Assistant](https://github.com/UBC-CIC/student-advising-assistant) project.  
 
 ## Architecture Diagram ##
-![diagram](./images/Architecture-Diagram.png)
+![diagram](./images/Architecture_Diagram.png)
 
 **Question Answering**  
 1. User asks a question to the Alexa-integrated device.  
