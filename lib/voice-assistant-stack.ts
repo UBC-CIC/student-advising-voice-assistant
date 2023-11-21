@@ -12,11 +12,6 @@ export class VoiceAssistantStack extends Stack {
 
         super(scope, id, props);
 
-        new ssm.StringParameter(this, 'vendor-parameter', {
-            parameterName: "my-skill-vendor-id",
-            stringValue: "M33ZTT1LFMTQJS",
-        });
-
         const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // replace it with your original value
 
         const skillCredentials = secretsmanager.Secret.fromSecretCompleteArn(this, 'skill-credentials', secretARN);
