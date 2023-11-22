@@ -3,10 +3,28 @@
     "publishingInformation": {
       "locales": {
         "en-CA": {
-          "name": "student-advising-assistant"
+          "name": "Student Advising Assistant",
+          "summary": "around-the-clock service hosted by UBC, that responds to student's academic inquiries in a conversational manner.",
+          "description": "The Faculty of Science Advising office at UBC collaborated with the UBC Cloud Innovation Center (CIC) to leverage large language models (LLMs) and generative AI to build a prototype with the goal to improve the advising quality and student experience.\n The prototype takes information from the Academic Calendar and other reliable UBC sources to provide around-the-clock service that responds to inquiries. \n The application conveys key information in a conversational manner, in the effort to minimize confusion for some students. \n This application does not require the use of any other software/hardware.",
+          "examplePhrases": ["Alexa, open student advising", "Alexa, start student advising"],
+          "smallIconUri": "file://assets/images/icon_108_A2Z.png",
+          "largeIconUri": "file://assets/images/icon_512_A2Z.png"
         }
       },
-      "category": "EDUCATION_AND_REFERENCE"
+      "category": "EDUCATION_AND_REFERENCE",
+      "isAvailableWorldwide": true,
+      "testingInstructions": "To test this skill, users must have deployed the student-advising-assitant application (https://github.com/UBC-CIC/student-advising-assistant). After successfully deployed the application, you can start the skill by saying `Alexa, open student advising.`"
+    },
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "containsAds": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "shoppingKit": {
+          "isShoppingActionsEnabled": false,
+          "isAmazonAssociatesOnAlexaEnabled": false
+      }
     }
   }
 }

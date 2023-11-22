@@ -1,6 +1,6 @@
 # Student Advising Voice Assistant
 
-This is a voice assistance feature of the [student advising assistant project](https://github.com/UBC-CIC/student-advising-assistant), where you can interact with the question answering system through Alexa. For more information visit the [CIC website].
+This is a voice assistance feature for the [student advising assistant project](https://github.com/UBC-CIC/student-advising-assistant), where you can interact with the question answering system through Alexa. For more information visit the [CIC website](https://cic.ubc.ca/project/student-advising-assistant/).
 
 | Index | Description |
 | ----- | ----------- |
@@ -14,28 +14,31 @@ This is a voice assistance feature of the [student advising assistant project](h
 | [License](#license) | License details |
 
 ## High Level Architecture
-The following architecture diagram illustrates the various AWS components utilized to deliver the solution. For an in-depth explanation of the frontend and backend stacks, refer to the [Architecture Design]().
-![Architecture Diagram](docs/images/Architecture-Diagram.png)
+The following architecture diagram illustrates the various AWS components utilized to deliver the solution. For an in-depth explanation of the frontend and backend stacks, refer to the [Architecture Design](./docs/ArchitectureDesign.md).
+![Architecture Diagram](docs/images/Architecture_Diagram.png)
 
 ## Deployment
-For instructions on how to deploy the application, refer to the [Deployment Guide]().
+For instructions on how to deploy the application, refer to the [Deployment Guide](./docs/DeploymentGuide.md).
 
 ## User Guide
-For instructions on how interact with the application via Alexa, refer to the [User Guide]().
+For instructions on how interact with the application via Alexa, refer to the [User Guide](./docs/UserGuide.md).
 
 ## Development
-For information on how the application was developed, refer to [Development Document]().
+For information on how the application was developed, refer to [Development Document](./docs/DevelopmentDocument.md).
 
 ## Directories
 ```
 ├── bin
+│   └── voice-assistant.ts
 ├── docs
 │   └── images
 ├── lambda
 ├── layers
 ├── lib
 ├── skills
-│   └── skill-package
+    └── skill-package
+        ├── assets
+        └── interactionModels
 ```
 1. `/bin`: Contains the instantiation of CDK stack
 2. `/docs`: Contains documentation for the application
@@ -44,6 +47,8 @@ For information on how the application was developed, refer to [Development Docu
 4. `/layers`: Contains the zip file that incorporates all the dependencies required to run lambda function
 5. `/lib`: Contains the deployment code for the stack of the infrastructure
 6. `/skills`: Contains the deployment code for Alexa Skill
+    - `/assets`: Contains image files used for the deployment of Alexa Skill
+    - `/interactionModels`: Contains the interaction model of the skill
 
 ## Changelog
 N/A
@@ -52,4 +57,4 @@ N/A
 This application was architected and developed by Kotaro Ito, with project assistance by Franklin Ma. A special thanks to the UBC Cloud Innovation Centre Technical and Project Management teams for their guidance and support.
 
 ## License
-This project is distributed under the [MIT License]().
+This project is distributed under the [MIT License](./LICENSE).
