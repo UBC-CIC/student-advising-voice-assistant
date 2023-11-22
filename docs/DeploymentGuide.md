@@ -129,8 +129,10 @@ It's time to set up everything that goes on behind the scenes! For more informat
 Note that this CDK deployment was tested in `ca-central-1` regions only.
 
 **Download Requirements**  
-Install requirements with npm:
-```npm install```
+Install requirements with npm by running the following command:
+```
+npm install --legacy-peer-deps
+```
 
 **Set up the retrieval of credentials from Secrets Manager**  
 Navigate to `/lib/voice-assistant-stack.ts`. In line 19, the variable called `secretARN` is declared.   
