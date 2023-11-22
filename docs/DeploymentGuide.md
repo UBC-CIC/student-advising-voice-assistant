@@ -99,7 +99,7 @@ After entering all necessary information, review them and create your secret by 
 Go back to the Secrets Manager Console, and click on the secret name you just created. 
 ![secret-info](./images/secret_info.png)
 
-Under the `Secret details` section, you can see your Secret ARN. Copy down this value.
+Under the `Secret details` section, you can see your Secret ARN. **Copy down this value**. 
 
 
 ## Deployment 
@@ -132,7 +132,13 @@ Note that this CDK deployment was tested in `ca-central-1` regions only.
 Install requirements with npm:
 ```npm install```
 
-**Configure the CDK deployment**  
+**Set up the retrieval of credentials from Secrets Manager**  
+Navigate to `/lib/voice-assistant-stack.ts`. In line 19, the variable called `secretARN` is declared.   
+```
+const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+```
+**<u>Please replace its value with the ARN you copied down earlier from the Secrets Manager console.</u>**  
+When replacing, only change the value inside the quotation marks (`''`). Do not remove the quotation marks. 
 
 **Initialize the CDK stacks**
 (required only if you have not deployed any resources with CDK in this region before)
