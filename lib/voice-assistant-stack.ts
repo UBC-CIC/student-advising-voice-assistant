@@ -12,7 +12,11 @@ export class VoiceAssistantStack extends Stack {
 
         super(scope, id, props);
 
-        const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'; // replace it with your original value
+        /*
+            Please replace the value below with the ARN of the secret you created earlier.
+            Do not remove the quotation marks ('').
+        */
+        const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 
         const skillCredentials = secretsmanager.Secret.fromSecretCompleteArn(this, 'skill-credentials', secretARN);
 
