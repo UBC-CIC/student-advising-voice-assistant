@@ -24,7 +24,7 @@ For instructions on how to deploy the application, refer to the [Deployment Guid
 For instructions on how interact with the application via Alexa, refer to the [User Guide](./docs/UserGuide.md).
 
 ## Development
-For information on how the application was developed, refer to [Development Document](./docs/DevelopmentDocument.md).
+For information on how the application was developed, refer to the [Development Document](./docs/DevelopmentDocument.md).
 
 ## Directories
 ```
@@ -40,15 +40,15 @@ For information on how the application was developed, refer to [Development Docu
         ├── assets
         └── interactionModels
 ```
-1. `/bin`: Contains the instantiation of CDK stack
+1. `/bin`: Contains the instantiation of the CDK stack
 2. `/docs`: Contains documentation for the application
-    - `/images`: Contains images used for the application
-3. `/lambda`: Contains the code for lambda function associated with Alexa Skill
-4. `/layers`: Contains the zip file that incorporates all the dependencies required to run lambda function
-5. `/lib`: Contains the deployment code for the stack of the infrastructure
-6. `/skills`: Contains the deployment code for Alexa Skill
-    - `/assets`: Contains image files used for the deployment of Alexa Skill
-    - `/interactionModels`: Contains the interaction model of the skill
+    - `/images`: Images used for the application
+3. `/lambda`: Contains the code for the lambda function associated with the Alexa Skill
+4. `/layers`: Contains the zip file that incorporates all the dependencies required to run the lambda function
+5. `/lib`: Contains the deployment code for the infrastructure stack
+6. `/skills`: Contains the deployment code for the Alexa Skill
+    - `/assets`: Image files used for the deployment of the Alexa Skill
+    - `/interactionModels`: The interaction model of the Alexa Skill
 
 ## Changelog
 N/A
