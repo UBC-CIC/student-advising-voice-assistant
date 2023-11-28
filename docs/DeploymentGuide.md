@@ -63,6 +63,7 @@ Click the "Edit" button, and add the following URL to the "Allowed Return URLs" 
 After adding them, click the "Save" button to save your changes, and click the "Show Secret" button to reveal your Client Secret. Please note down both the `Client ID` and `Client Secret`.
 
 **Get Refresh Token from ASK CLI**
+
 Your `Client ID` and `Client Secret` allow you generate a refresh token for authenticating with the Alexa SKills Kit.
 
 Navigate to your local terminal and run the following command, replacing `<your Client ID>` and `<your Client Secret>` with your original values:
