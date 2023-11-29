@@ -19,7 +19,7 @@ This voice assistant feature is designed for [Student Advising Assistant](https:
   - When prompted to answer their faculty/program/year level, users can answer their name/value (e.g. Faculty of Science/Bachelor of Science/Third year).
   - When prompted to answer their specialization, users need to answer their subject first (e.g. Computer Science, Mathematics, etc), then answer the full name of their specialization (e.g. Major Computer Science, Honours Mathematics, etc).
 
-**2. Alexa first converts voice to text, uses Natural Language Understanding(NLU) to interpret the user's request and calls the backend service that runs as an AWS Lambda function to handle the request.**
+**2. Alexa first converts voice to text, uses Natural Language Understanding (NLU) to interpret the user's request and calls the backend service that runs as an AWS Lambda function to handle the request.**
 
 **3. AWS Lambda function acts as a request handler and calls the API defined in the Student Advising project to retrieve the answer.**
 - API is hosted on AWS Elastic Beanstalk
