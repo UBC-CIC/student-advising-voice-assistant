@@ -58,3 +58,9 @@ This application was architected and developed by Kotaro Ito, with project assis
 
 ## License
 This project is distributed under the [MIT License](./LICENSE).
+
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+- Used by `aws-cdk` to handle AWS services
+
+[MIT License](./LICENSE)
+- Used by `cdk-skill-management` library to deploy Alexa Skills
