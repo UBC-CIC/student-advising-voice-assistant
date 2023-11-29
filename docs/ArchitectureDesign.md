@@ -24,10 +24,10 @@ This voice assistant feature is designed for [Student Advising Assistant](https:
 **3. AWS Lambda function acts as a request handler and calls the API defined in the Student Advising project to retrieve the answer.**
 - API is hosted on AWS Elastic Beanstalk
 - Each API route is defined for a single responsibility.
-- When users choose the question type (either general or program-specific question), it accesses the “/faculties” route of the API to obtain a list of faculties.
-- When users answer their faculty, it interacts with the API by accessing the “/programs” route to retrieve the list of programs associated with the selected faculty.
-- When users answer the subject name of their specialization, it accesses the “/specializations” route to retrieve the list of relevant specializations.
-- When users submit a question, it accesses the “/question” route of the API so that it calls the question-answering system defined in the Student Advising Project, and generates the answer for the given question. To find out more about how the response is generated, you can find the information [here](https://github.com/UBC-CIC/student-advising-assistant/blob/main/docs/ArchitectureDesign.md#aws-infrastructure).
+- When users choose the question type (either general or program-specific question), it accesses the `/faculties` route of the API to obtain a list of faculties.
+- When users answer their faculty, it interacts with the API by accessing the `/programs` route to retrieve the list of programs associated with the selected faculty.
+- When users answer the subject name of their specialization, it accesses the `/specializations` route to retrieve the list of relevant specializations.
+- When users submit a question, it accesses the `/question` route of the API so that it calls the question-answering system defined in the Student Advising Project, and generates the answer for the given question. To find out more about how the response is generated, you can find the information [here](https://github.com/UBC-CIC/student-advising-assistant/blob/main/docs/ArchitectureDesign.md#aws-infrastructure).
 
 **4. The generated response is sent back from the Student Advising Assistant to the Lambda handler in the form of a JSON-formatted data object.**
 - `/faculties`: returns the list of UBC faculties.
@@ -36,4 +36,5 @@ This voice assistant feature is designed for [Student Advising Assistant](https:
 - `/question`: takes in the question as an argument, and calls the question-answering system in the Student Advising Project to generate the response to the question.
 
 **5. Lambda receives the answer as an HTTP response. The response is sent back in JSON format and contains the necessary data to update the Alexa Skill. It reads the data, updates entities accordingly, and then prepares the confirmation message to send back to the device.**
+
 **6. Alexa interprets the response, converts text to voice, and speaks the answer back to the user. If needed, it asks for additional information to the user (e.g. program, specialization, year level, etc)**.
