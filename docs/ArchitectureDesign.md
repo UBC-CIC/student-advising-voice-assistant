@@ -27,7 +27,7 @@ This voice assistant feature is designed for [Student Advising Assistant](https:
 - When users choose the question type (either general or program-specific question), it accesses the `/faculties` route of the API to obtain a list of faculties.
 - When users answer their faculty, it interacts with the API by accessing the `/programs` route to retrieve the list of programs associated with the selected faculty.
 - When users answer the subject name of their specialization, it accesses the `/specializations` route to retrieve the list of relevant specializations.
-- When users submit a question, it accesses the `/question` route of the API so that it calls the question-answering system defined in the Student Advising Project, and generates the answer for the given question. To find out more about how the response is generated, you can find the information [here](https://github.com/UBC-CIC/student-advising-assistant/blob/main/docs/ArchitectureDesign.md#aws-infrastructure).
+- When users submit a question, it accesses the `/question` route of the API so that it calls the question-answering system defined in the Student Advising Project, and generates the answer for the given question. To find out more about how the response is generated, you can learn more [here](https://github.com/UBC-CIC/student-advising-assistant/blob/main/docs/ArchitectureDesign.md#aws-infrastructure).
 
 **4. The generated response is sent back from the Student Advising Assistant to the Lambda handler in the form of a JSON-formatted data object.**
 - `/faculties`: returns the list of UBC faculties.
