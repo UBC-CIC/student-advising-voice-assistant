@@ -16,8 +16,8 @@ This voice assistant feature is designed for [Student Advising Assistant](https:
 ### Question Answering ###
 **1. User makes a request to the Alexa-enabled device.**
   - Users can start up the skill (application) by saying “Alexa, open student advising”.
-  - When prompted to answer their faculty/program/year level, users can answer their name/value (e.g., Faculty of Science/Bachelor of Science/Third year).
-  - When prompted to answer their specialization, users need to answer their subject first (e.g., Computer Science, Mathematics, etc), then answer the full name of their specialization (e.g., Major Computer Science, Honours Mathematics, etc).
+  - When prompted to answer their faculty/program/year level, users can answer their name/value (e.g. Faculty of Science/Bachelor of Science/Third year).
+  - When prompted to answer their specialization, users need to answer their subject first (e.g. Computer Science, Mathematics, etc), then answer the full name of their specialization (e.g. Major Computer Science, Honours Mathematics, etc).
 
 **2. Alexa first converts voice to text, uses Natural Language Understanding(NLU) to interpret the user's request and calls the backend service that runs as an AWS Lambda function to handle the request.**
 
@@ -36,4 +36,4 @@ This voice assistant feature is designed for [Student Advising Assistant](https:
 - `/question`: takes in the question as an argument, and calls the question-answering system in the Student Advising Project to generate the response to the question.
 
 **5. Lambda receives the answer as an HTTP response. The response is sent back in JSON format and contains the necessary data to update the Alexa Skill. It reads the data, updates entities accordingly, and then prepares the confirmation message to send back to the device.**
-**6. Alexa interprets the response, converts text to voice, and speaks the answer back to the user. If needed, it asks for additional information to the user (e.g., program, specialization, year level, etc)**.
+**6. Alexa interprets the response, converts text to voice, and speaks the answer back to the user. If needed, it asks for additional information to the user (e.g. program, specialization, year level, etc)**.
