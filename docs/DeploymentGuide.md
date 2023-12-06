@@ -91,11 +91,11 @@ After filling out these fields, click on `Next` to proceed.
 ![secret-2](./images/store_secret_2.png)
 
 Now enter your secret name.  
-**IMPORTANT: name you secret name to be `StudentAdvisingVoiceAssistant/SkillCredentials`.**
+**IMPORTANT: please set your secret name to be `StudentAdvisingVoiceAssistant/SkillCredentials`.**
 
 
-**Please leave the rest of the form blank, and simply move on by clicking `Next`.**  
-**You do not have to edit anything in step 3: `Configure Rotation` section.**
+Please leave the rest of the form blank, and simply move on by clicking `Next`.   
+You do not have to edit anything in step 3: `Configure Rotation` section.
 
 After entering all necessary information, review them and create your secret by clicking the `Store` button.
 
