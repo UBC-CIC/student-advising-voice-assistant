@@ -1,6 +1,9 @@
+import boto3
+import os
 from ask_sdk_model.er.dynamic import Entity, EntityValueAndSynonyms
 from enum import Enum
 
+ssm = boto3.client("ssm")
 
 # ENUM DEFINITIONS
 class QuestionType(Enum):
@@ -35,6 +38,7 @@ class Status(Enum):
     WAITING = "waiting"
 
 # ARRTIBUTES & ENTITIES
+BASE_URL = "http://" + ssm.get_parameter(Name = os.environ.get("URL_PARAM"))["Parameter"]["Value"]
 ATTRIBUTES = ["question_type", "faculty", "program", "specialization", "year_level", "topic", "question", "answer", "ask_another_question"]
 
 QUESTION_TYPE_ENTITIES = [
