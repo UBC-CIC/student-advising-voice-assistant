@@ -13,9 +13,6 @@ from constants import *
 import requests
 import re
 
-# Constants
-BASE_URL = "http://student-advising-voice-assitant-demo.ca-central-1.elasticbeanstalk.com/"
-
 # SkillBuilder initialization
 sb = CustomSkillBuilder(api_client=DefaultApiClient())
 

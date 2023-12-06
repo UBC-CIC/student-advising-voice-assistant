@@ -1,5 +1,6 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import * as ask from 'cdk-skill-management';
 import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 import { Asset } from 'aws-cdk-lib/aws-s3-assets';
@@ -11,10 +12,6 @@ export class VoiceAssistantStack extends Stack {
 
         super(scope, id, props);
 
-        /*
-            Please replace the value below with the ARN of the secret you created earlier.
-            Do not remove the quotation marks ('').
-        */
         const secretARN = `arn:aws:secretsmanager:${this.region}:${this.account}:secret:skill-credentials-1`;
 
         const skillCredentials = secretsmanager.Secret.fromSecretPartialArn(this, 'skill-credentials', secretARN);
@@ -26,13 +23,37 @@ export class VoiceAssistantStack extends Stack {
         const skillBackendLayer = new lambda.LayerVersion(this, 'skill-backend-layer', {
             code: lambda.Code.fromAsset('./layers/skill_backend_layer.zip'),
             compatibleRuntimes: [lambda.Runtime.PYTHON_3_11],
-        })
+        });
+
+        const backendRole = new iam.Role(this, "backend-role", {
+            assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
+            managedPolicies: [
+                iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMReadOnlyAccess")
+            ],
+            description: "IAM role for the skill backend function"
+        });
+
+        const logPolicy = new iam.PolicyStatement({
+            resources: ['*'],
+            actions: [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ]
+        });
+
+        backendRole.addToPolicy(logPolicy);
+        
 
         const skillBackend = new lambda.Function(this, 'skill-backend', {
             runtime: lambda.Runtime.PYTHON_3_11,
             code: lambda.Code.fromAsset('./lambda'),
+            role: backendRole,
             handler: 'voice_assistant.lambda_handler',
             layers: [skillBackendLayer],
+            environment: {
+                URL_PARAM: "/student-advising/BEANSTALK_URL"
+            }
         });
 
         const skillPermission = new ask.SkillEndpointPermission(this, 'skill-permission', {
