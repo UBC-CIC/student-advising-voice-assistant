@@ -15,9 +15,9 @@ export class VoiceAssistantStack extends Stack {
             Please replace the value below with the ARN of the secret you created earlier.
             Do not remove the quotation marks ('').
         */
-        const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+        const secretARN = `arn:aws:secretsmanager:${this.region}:${this.account}:secret:skill-credentials-1`;
 
-        const skillCredentials = secretsmanager.Secret.fromSecretCompleteArn(this, 'skill-credentials', secretARN);
+        const skillCredentials = secretsmanager.Secret.fromSecretPartialArn(this, 'skill-credentials', secretARN);
 
         const skillAsset = new Asset(this, 'skill-asset', {
             path: './skills/skill-package',
