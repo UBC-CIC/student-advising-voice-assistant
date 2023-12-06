@@ -31,7 +31,6 @@ Helper functions
 '''
 def get_canonical_value(handler_input, slot_name):
         input = handler_input.request_envelope.request.intent.slots[slot_name].resolutions.resolutions_per_authority[1]
-        print(input.status.code)
         return Status.NO_MATCH if input.status.code == StatusCode.ER_SUCCESS_NO_MATCH else input.values[0].value.name
 
 def replace_dynamic_entities(handler_input, entities, slot_name):
@@ -66,7 +65,6 @@ def is_first_specific_question(handler_input):
 
 def add_faculty_entities(handler_input):
     faculties = requests.get(BASE_URL + "faculties").json()
-    print(faculties)
     new_entities = []
     for faculty in faculties:
         entity_value = EntityValueAndSynonyms(value = faculty, synonyms = [faculty.lower(), faculty.lower().replace('the ', '')])
@@ -258,7 +256,6 @@ class CatchAllIntentHandler(AbstractRequestHandler):
     
     def handle_year_level(self, handler_input):
         rb = handler_input.response_builder
-        print(handler_input.request_envelope.request.intent.slots["text"].value)
         year_level = get_canonical_value(handler_input, "text")
 
         if year_level == Status.NO_MATCH:
@@ -347,7 +344,16 @@ class CatchAllIntentHandler(AbstractRequestHandler):
 
         return rb.speak(speech_text).ask(speech_text).response
 
+class SessionEndedRequestHandler(AbstractRequestHandler):
+
+    def can_handle(self, handler_input):
+        return is_request_type("SessionEndedRequest")(handler_input)
+
+    def handle(self, handler_input):
+        return handler_input.response_builder.set_should_end_session(True).response
+
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(CatchAllIntentHandler())
+sb.add_request_handler(SessionEndedRequestHandler())
 
 lambda_handler = sb.lambda_handler()
