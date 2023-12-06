@@ -11,7 +11,6 @@
   - [Deployment](#deployment)
     - [Step 1: Clone The Repository](#step-1-clone-the-repository)
     - [Step 2: CDK Deployment](#step-2-cdk-deployment)
-      - [**Extra: Taking down the deployed stacks**](#extra-taking-down-the-deployed-stacks)
     - [Step 3: Uploading the configuration file](#step-3-uploading-the-configuration-file)
 
 ## Requirements
@@ -91,7 +90,10 @@ Please navigate to the AWS Secrets Manager Console. Click the "Store a new secre
 After filling out these fields, click on `Next` to proceed.
 ![secret-2](./images/store_secret_2.png)
 
-Now enter your secret name. This can be anything you like.  
+Now enter your secret name.  
+**IMPORTANT: name you secret name to be `StudentAdvisingVoiceAssistant/SkillCredentials`.**
+
+
 **Please leave the rest of the form blank, and simply move on by clicking `Next`.**  
 **You do not have to edit anything in step 3: `Configure Rotation` section.**
 
@@ -100,7 +102,6 @@ After entering all necessary information, review them and create your secret by 
 Go back to the Secrets Manager Console, and click on the secret name you just created. 
 ![secret-info](./images/secret_info.png)
 
-Under the `Secret details` section, you can see your Secret ARN. **Copy down this value**. 
 
 
 ## Deployment 
@@ -134,14 +135,6 @@ Install requirements with npm by running the following command:
 ```
 npm install --legacy-peer-deps
 ```
-
-**Set up the retrieval of credentials from Secrets Manager**  
-Navigate to `/lib/voice-assistant-stack.ts`. In line 19, the variable called `secretARN` is declared.   
-```
-const secretARN = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-```
-**<u>Please replace its value with the ARN you copied down earlier from the Secrets Manager console.</u>**  
-When replacing, only change the value inside the quotation marks (`''`). Do not remove the quotation marks. 
 
 **Initialize the CDK stacks**
 (required only if you have not deployed any resources with CDK in this region before)

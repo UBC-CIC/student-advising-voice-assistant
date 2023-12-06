@@ -1,4 +1,4 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { Duration, Stack, StackProps } from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as ask from 'cdk-skill-management';
@@ -12,7 +12,7 @@ export class VoiceAssistantStack extends Stack {
 
         super(scope, id, props);
 
-        const secretARN = `arn:aws:secretsmanager:${this.region}:${this.account}:secret:skill-credentials-1`;
+        const secretARN = `arn:aws:secretsmanager:${this.region}:${this.account}:secret:StudentAdvisingVoiceAssistant/SkillCredentials`;
 
         const skillCredentials = secretsmanager.Secret.fromSecretPartialArn(this, 'skill-credentials', secretARN);
 
@@ -51,6 +51,7 @@ export class VoiceAssistantStack extends Stack {
             role: backendRole,
             handler: 'voice_assistant.lambda_handler',
             layers: [skillBackendLayer],
+            timeout: Duration.seconds(30),
             environment: {
                 URL_PARAM: "/student-advising/BEANSTALK_URL"
             }
