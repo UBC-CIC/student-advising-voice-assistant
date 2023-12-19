@@ -4,7 +4,7 @@
       "locales": {
         "en-CA": {
           "name": "Student Advising Assistant",
-          "summary": "around-the-clock service hosted by UBC, that responds to student's academic inquiries in a conversational manner.",
+          "summary": "serivce prototype that responds to UBC student's academic inquiries in a conversational manner.",
           "description": "The Faculty of Science Advising office at UBC collaborated with the UBC Cloud Innovation Center (CIC) to leverage large language models (LLMs) and generative AI to build a prototype with the goal to improve the advising quality and student experience.\n The prototype takes information from the Academic Calendar and other reliable UBC sources to provide around-the-clock service that responds to inquiries. \n The application conveys key information in a conversational manner, in the effort to minimize confusion for some students. \n This application does not require the use of any other software/hardware.",
           "examplePhrases": ["Alexa, open student advising", "Alexa, start student advising"],
           "smallIconUri": "file://assets/images/icon_108_A2Z.png",
